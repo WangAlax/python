@@ -1,0 +1,31 @@
+"""
+Created on Mon Dec 10 17:52:07 2018
+@author: Alax
+
+Learn(PIL)：
+https://pillow.readthedocs.io/en/5.3.x/reference/ImageDraw.html
+"""
+
+from PIL import Image, ImageDraw, ImageFont
+
+original_avatar = '123.png'
+saved_avatar = '1234.png'     
+windows_font = 'arial.ttf'
+color = (255, 0, 0)
+
+def draw_text(text, fill_color, windows_font):
+    try:
+        im = Image.open(original_avatar)
+        x, y =  im.size        
+        draw = ImageDraw.Draw(im)
+        font = ImageFont.truetype(windows_font, 35)
+        draw.text((x-350, 7), text, font = font , fill = fill_color)     #根据图片大小调整 x,y
+        
+        im.save(saved_avatar)
+        
+    except:
+        print ("Unable to load image")
+
+if __name__ == "__main__":
+    number = '2222'
+    draw_text(number, color, windows_font)
